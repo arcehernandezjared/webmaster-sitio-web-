@@ -109,6 +109,7 @@ function Navbar({ t, lang, setLang }) {
   const links = [
     ['#sobre', t.navAbout],
     ['#soluciones', t.navSolutions],
+    ['#agendar', t.navSchedule],
     ['#contacto', t.navContact]
   ];
 
@@ -322,7 +323,8 @@ function Navbar({ t, lang, setLang }) {
   );
 }
 
-function Hero({ t }) {
+function Hero({ t, onOpenCase }) {
+  const giftIndex = t.cases.findIndex((c) => c.liveUrl);
   return (
     <section
       id="top"
@@ -384,6 +386,48 @@ function Hero({ t }) {
                 {t.heroCta2}
               </a>
             </div>
+            <button
+              type="button"
+              onClick={() => onOpenCase(giftIndex)}
+              data-lift="1"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 10,
+                marginTop: 16,
+                padding: '12px 20px',
+                borderRadius: 999,
+                background: 'linear-gradient(135deg, var(--color-accent-500), var(--color-accent-700))',
+                border: '2px solid var(--color-accent-500)',
+                boxShadow: '0 0 0 4px var(--color-accent-100), 0 8px 24px color-mix(in srgb, var(--color-accent-500) 45%, transparent)',
+                color: '#fff',
+                fontFamily: 'var(--font-heading)',
+                fontWeight: 800,
+                fontSize: 13,
+                letterSpacing: '0.06em',
+                cursor: 'pointer'
+              }}
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{ flex: '0 0 auto' }}
+                aria-hidden="true"
+              >
+                <rect x="3" y="8" width="18" height="4" rx="1" />
+                <path d="M12 8v13" />
+                <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" />
+                <path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8" />
+                <path d="M16.5 8a2.5 2.5 0 0 0 0-5C13 3 12 8 12 8" />
+              </svg>
+              {t.heroGiftCta}
+            </button>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 32 }}>
               {t.heroChips.map((c) => (
                 <span
@@ -525,7 +569,7 @@ function Problems({ t }) {
           <h2 style={{ ...S.h2, maxWidth: '22ch', fontSize: 'clamp(30px,4.2vw,56px)' }}>{t.s1Title}</h2>
         </div>
         <div style={{ ...S.rule, margin: '24px 0 0' }} />
-        <div style={{ ...S.grid(260), gap: 2, marginTop: 40, background: 'var(--color-accent-300)' }}>
+        <div className="tile-grid" style={{ ...S.grid(260), gap: 2, marginTop: 40, background: 'var(--color-accent-300)' }}>
           {t.problems.map((p) => (
             <InvertTile key={p.n}>
               {(ink) => (
@@ -554,12 +598,12 @@ function Solutions({ t }) {
     >
       <div style={S.wrap}>
         <div data-reveal="1">
-          <p style={S.kicker}>02 · {t.s2Kicker}</p>
+          <p style={S.kicker}>03 · {t.s2Kicker}</p>
           <h2 style={{ ...S.h2, maxWidth: '24ch', fontSize: 'clamp(30px,4.2vw,56px)', marginBottom: 16 }}>{t.s2Title}</h2>
           <p style={{ margin: 0, maxWidth: '58ch', fontSize: 17, color: 'var(--color-neutral-800)', textWrap: 'pretty' }}>{t.s2Body}</p>
         </div>
         <div style={{ ...S.rule, margin: '24px 0 0' }} />
-        <div style={{ ...S.grid(280), gap: 2, marginTop: 40, background: 'var(--color-accent-300)' }}>
+        <div className="tile-grid" style={{ ...S.grid(280), gap: 2, marginTop: 40, background: 'var(--color-accent-300)' }}>
           {t.services.map((sv) => (
             <InvertTile key={sv.n} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {(ink) => (
@@ -596,7 +640,7 @@ function Benefits({ t }) {
     <section id="sobre" style={{ borderBottom: '2px solid var(--color-text)', background: 'var(--color-surface)' }}>
       <div style={{ ...S.wrap, ...S.grid(320), gap: 56 }}>
         <div data-reveal="1">
-          <p style={S.kicker}>03 · {t.s3Kicker}</p>
+          <p style={S.kicker}>04 · {t.s3Kicker}</p>
           <h2 style={{ ...S.h2, marginBottom: 16 }}>{t.s3Title}</h2>
           <p style={{ margin: 0, maxWidth: '44ch', fontSize: 17, color: 'var(--color-neutral-800)', textWrap: 'pretty' }}>{t.s3Body}</p>
           <a href="#contacto" className="btn btn-primary" style={{ ...S.btnUpper, marginTop: 28, color: '#fff' }}>
@@ -624,11 +668,11 @@ function Process({ t }) {
     <section style={{ borderBottom: '2px solid var(--color-text)' }}>
       <div style={S.wrap}>
         <div data-reveal="1">
-          <p style={S.kicker}>04 · {t.s4Kicker}</p>
+          <p style={S.kicker}>05 · {t.s4Kicker}</p>
           <h2 style={S.h2}>{t.s4Title}</h2>
         </div>
         <div style={{ ...S.rule, margin: '24px 0 40px' }} />
-        <div style={{ ...S.grid(240), gap: 2, background: 'var(--color-accent-300)' }}>
+        <div className="tile-grid" style={{ ...S.grid(240), gap: 2, background: 'var(--color-accent-300)' }}>
           {t.steps.map((sp) => (
             <InvertTile key={sp.n} style={{ padding: '28px 26px' }}>
               {(ink) => (
@@ -651,7 +695,7 @@ function Portfolio({ t, onOpen }) {
     <section style={{ borderBottom: '2px solid var(--color-text)' }}>
       <div style={S.wrap}>
         <div data-reveal="1">
-          <p style={S.kicker}>05 · {t.s5Kicker}</p>
+          <p style={S.kicker}>02 · {t.s5Kicker}</p>
           <h2 style={{ ...S.h2, marginBottom: 12 }}>{t.s5Title}</h2>
           <p style={{ margin: '0 0 40px', fontSize: 15, color: 'var(--color-neutral-700)' }}>{t.s5Note}</p>
         </div>
@@ -744,9 +788,18 @@ function CaseModal({ t, index, onClose }) {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        style={{ width: '100%', maxWidth: 1040, background: 'var(--color-bg)', border: '2px solid var(--color-text)', boxShadow: 'var(--shadow-lg)' }}
+        style={{
+          width: '100%',
+          maxWidth: 960,
+          maxHeight: '85vh',
+          display: 'flex',
+          flexDirection: 'column',
+          background: 'var(--color-bg)',
+          border: '2px solid var(--color-text)',
+          boxShadow: 'var(--shadow-lg)'
+        }}
       >
-        <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start', justifyContent: 'space-between', padding: '22px 26px', borderBottom: '2px solid var(--color-text)' }}>
+        <div style={{ flex: '0 0 auto', display: 'flex', gap: 20, alignItems: 'flex-start', justifyContent: 'space-between', padding: '18px 24px', borderBottom: '2px solid var(--color-text)' }}>
           <div>
             <p style={{ ...S.kicker, marginBottom: 8 }}>{c.kicker}</p>
             <h3 style={{ ...S.h2, fontSize: 'clamp(22px,3vw,36px)', textTransform: 'uppercase' }}>{c.title}</h3>
@@ -774,7 +827,7 @@ function CaseModal({ t, index, onClose }) {
           </button>
         </div>
 
-        <div style={S.grid(320)}>
+        <div style={{ ...S.grid(320), overflowY: 'auto', minHeight: 0 }}>
           <div style={{ display: 'flex', flexDirection: 'column', background: 'var(--color-surface)' }}>
             <div style={{ position: 'relative', aspectRatio: '16 / 10', background: 'var(--color-accent-900)', overflow: 'hidden' }}>
               <img
@@ -841,34 +894,46 @@ function CaseModal({ t, index, onClose }) {
             )}
           </div>
 
-          <div data-case-panel="1" style={{ padding: '28px 26px', borderLeft: '2px solid var(--color-text)', marginLeft: -2 }}>
-            <p style={{ margin: '0 0 26px', fontSize: 16, color: 'var(--color-neutral-800)', textWrap: 'pretty' }}>{c.body}</p>
+          <div data-case-panel="1" style={{ padding: '20px 22px', borderLeft: '2px solid var(--color-text)', marginLeft: -2 }}>
+            {c.liveUrl && (
+              <a
+                href={c.liveUrl}
+                target="_blank"
+                rel="noopener"
+                className="btn btn-primary"
+                style={{ ...S.btnUpper, marginBottom: 18, color: '#fff' }}
+              >
+                {t.caseTryApp} →
+              </a>
+            )}
+
+            <p style={{ margin: '0 0 18px', fontSize: 15, color: 'var(--color-neutral-800)', textWrap: 'pretty' }}>{c.body}</p>
 
             {!!c.features?.length && (
-              <div style={{ margin: '0 0 26px' }}>
-                <p style={{ margin: '0 0 14px', fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-neutral-700)' }}>{t.caseFeatures}</p>
-                <div style={{ display: 'grid', gap: 2, background: 'var(--color-accent-300)', borderTop: '4px solid var(--color-accent)' }}>
+              <div style={{ margin: '0 0 18px' }}>
+                <p style={{ margin: '0 0 10px', fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-neutral-700)' }}>{t.caseFeatures}</p>
+                <div className="tile-grid" style={{ display: 'grid', gap: 2, background: 'var(--color-accent-300)', borderTop: '4px solid var(--color-accent)' }}>
                   {c.features.map((f) => (
-                    <p key={f} style={{ margin: 0, background: 'var(--color-bg)', padding: '11px 14px', fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 15 }}>{f}</p>
+                    <p key={f} style={{ margin: 0, background: 'var(--color-bg)', padding: '9px 12px', fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 14 }}>{f}</p>
                   ))}
                 </div>
               </div>
             )}
 
-            <p style={{ margin: '0 0 14px', fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-neutral-700)' }}>{t.caseSolves}</p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 14, borderTop: '1px solid var(--color-neutral-400)', paddingTop: 18 }}>
+            <p style={{ margin: '0 0 10px', fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-neutral-700)' }}>{t.caseSolves}</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10, borderTop: '1px solid var(--color-neutral-400)', paddingTop: 14 }}>
               {c.solves.map((sv) => (
                 <div key={sv.p} style={{ display: 'flex', gap: 14 }}>
                   <span style={{ flex: '0 0 auto', width: 9, height: 9, marginTop: 7, background: 'var(--color-accent)' }} />
                   <div>
-                    <p style={{ margin: '0 0 4px', fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: 16 }}>{sv.p}</p>
-                    <p style={{ ...S.body, fontSize: 14 }}>{sv.r}</p>
+                    <p style={{ margin: '0 0 4px', fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: 15 }}>{sv.p}</p>
+                    <p style={{ ...S.body, fontSize: 13 }}>{sv.r}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 26 }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 18 }}>
               {c.stack.map((tg) => (
                 <span key={tg} className="tag tag-outline">{tg}</span>
               ))}
@@ -878,8 +943,8 @@ function CaseModal({ t, index, onClose }) {
               href={waLink('Hola, vi un proyecto en su sitio y quiero algo similar')}
               target="_blank"
               rel="noopener"
-              className="btn btn-primary"
-              style={{ ...S.btnUpper, marginTop: 26, color: '#fff' }}
+              className={c.liveUrl ? 'btn btn-secondary' : 'btn btn-primary'}
+              style={{ ...S.btnUpper, marginTop: 18, color: c.liveUrl ? undefined : '#fff' }}
             >
               {t.caseCta}
             </a>
@@ -898,9 +963,17 @@ function Testimonials({ t }) {
           <p style={S.kicker}>06 · {t.s7Kicker}</p>
           <h2 style={{ ...S.h2, marginBottom: 40 }}>{t.s7Title}</h2>
         </div>
-        <div style={{ ...S.grid(280), gap: 2, background: 'var(--color-text)' }}>
+        <div className="tile-grid" style={{ ...S.grid(280), gap: 2, background: 'var(--color-text)' }}>
           {t.quotes.map((q) => (
             <blockquote key={q.who} data-reveal="1" data-lift="1" style={{ margin: 0, background: 'var(--color-bg)', padding: '32px 28px' }}>
+              {q.logo && (
+                <img
+                  src={q.logo}
+                  alt={q.who}
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  style={{ display: 'block', height: 44, width: 'auto', maxWidth: 150, objectFit: 'contain', marginBottom: 18 }}
+                />
+              )}
               <p style={{ margin: '0 0 20px', fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 19, lineHeight: 1.35, textWrap: 'pretty' }}>“{q.text}”</p>
               <footer style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-neutral-700)' }}>{q.who}</footer>
             </blockquote>
@@ -1032,7 +1105,7 @@ function Contact({ t, lang }) {
           <div style={{ ...S.rule, margin: '24px 0' }} />
           <p style={{ margin: '0 0 32px', maxWidth: '42ch', fontSize: 17, color: 'var(--color-neutral-800)', textWrap: 'pretty' }}>{t.s9Body}</p>
 
-          <div style={{ display: 'grid', gap: 2, background: 'var(--color-accent-300)', borderTop: '4px solid var(--color-accent)' }}>
+          <div className="tile-grid" style={{ display: 'grid', gap: 2, background: 'var(--color-accent-300)', borderTop: '4px solid var(--color-accent)' }}>
             <a href={waLink()} target="_blank" rel="noopener" data-contact-card="1" style={card}>
               <span>
                 <span style={cardLabel}>WhatsApp</span>
@@ -1110,6 +1183,69 @@ function Contact({ t, lang }) {
   );
 }
 
+/* Carga el embed de Cal.com una sola vez y monta el calendario inline en #my-cal-inline-30min. */
+function useCalEmbed() {
+  useEffect(() => {
+    (function (C, A, L) {
+      const p = function (a, ar) { a.q.push(ar); };
+      const d = C.document;
+      C.Cal = C.Cal || function () {
+        const cal = C.Cal;
+        const ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement('script')).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === 'string') {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ['initNamespace', namespace]);
+          } else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, 'https://app.cal.com/embed/embed.js', 'init');
+
+    window.Cal('init', '30min', { origin: 'https://app.cal.com' });
+    window.Cal.config = window.Cal.config || {};
+    window.Cal.config.forwardQueryParams = true;
+    window.Cal.ns['30min']('inline', {
+      elementOrSelector: '#my-cal-inline-30min',
+      config: { layout: 'month_view', useSlotsViewOnSmallScreen: 'true' },
+      calLink: 'jared-arce-hernandez-odlyub/30min'
+    });
+    window.Cal.ns['30min']('ui', { hideEventTypeDetails: false, layout: 'month_view' });
+  }, []);
+}
+
+function Scheduler({ t }) {
+  useCalEmbed();
+  return (
+    <section id="agendar" style={{ borderBottom: '2px solid var(--color-text)', background: 'var(--color-surface)' }}>
+      <div style={S.wrap}>
+        <div data-reveal="1">
+          <p style={S.kicker}>09 · {t.s10Kicker}</p>
+          <h2 style={{ ...S.h2, marginBottom: 16 }}>{t.s10Title}</h2>
+          <p style={{ margin: 0, maxWidth: '58ch', fontSize: 17, color: 'var(--color-neutral-800)', textWrap: 'pretty' }}>{t.s10Body}</p>
+        </div>
+        <div
+          data-reveal="1"
+          style={{ marginTop: 32, border: '2px solid var(--color-text)', background: '#fff', height: 700, overflow: 'hidden' }}
+        >
+          <div id="my-cal-inline-30min" style={{ width: '100%', height: '100%', overflow: 'auto' }} />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function CtaBanner({ t }) {
   return (
     <section style={{ background: 'var(--color-accent)', color: '#fff' }}>
@@ -1151,6 +1287,7 @@ function Footer({ t }) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <a href="#sobre" style={link}>{t.navAbout}</a>
             <a href="#soluciones" style={link}>{t.navSolutions}</a>
+            <a href="#agendar" style={link}>{t.navSchedule}</a>
             <a href="#contacto" style={link}>{t.navContact}</a>
           </div>
         </div>
@@ -1184,17 +1321,18 @@ export default function App() {
   return (
     <div style={{ width: '100%', fontFamily: 'var(--font-body)', lineHeight: 1.5 }}>
       <Navbar t={t} lang={lang} setLang={setLang} />
-      <Hero t={t} />
+      <Hero t={t} onOpenCase={setWork} />
       <Stats t={t} />
       <Problems t={t} />
+      <Portfolio t={t} onOpen={setWork} />
+      <CaseModal t={t} index={work} onClose={() => setWork(-1)} />
       <Solutions t={t} />
       <Benefits t={t} />
       <Process t={t} />
-      <Portfolio t={t} onOpen={setWork} />
-      <CaseModal t={t} index={work} onClose={() => setWork(-1)} />
       <Testimonials t={t} />
       <Faq t={t} />
       <Contact t={t} lang={lang} />
+      <Scheduler t={t} />
       <CtaBanner t={t} />
       <Footer t={t} />
 

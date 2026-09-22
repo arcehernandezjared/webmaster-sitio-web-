@@ -1,10 +1,11 @@
 export const COPY = {
   es: {
-    navAbout: "Sobre mí", navSolutions: "Soluciones", navPlans: "Planes", navContact: "Contacto", navCta: "Cotizar",
+    navAbout: "Sobre mí", navSolutions: "Soluciones", navPlans: "Planes", navSchedule: "Agendar", navContact: "Contacto", navCta: "Cotizar",
     heroKicker: "Software a la medida · Resultados reales",
     heroTitleA: "Automatiza", heroTitleB: "Tu Negocio",
     heroBody: "Inventario inteligente, CRM con IA, agenda de citas automática, sitios web y catálogos virtuales. Todo lo que tu negocio necesita para operar mejor y vender más.",
     heroCta1: "¿Tu negocio pierde ventas?", heroCta2: "Ver soluciones",
+    heroGiftCta: "Probá gratis nuestra app de finanzas",
     heroBadge: "Sistemas activos 24/7",
     heroFounderName: "Jared Arce Hernández",
     heroFounderRole: "Fundador de WebMasterCR",
@@ -54,6 +55,7 @@ export const COPY = {
     caseSolves: "Problemas que resuelve",
     caseFeatures: "Características principales",
     caseCta: "Quiero algo así",
+    caseTryApp: "Entrar a la app",
     caseNoImage: "Arrastrá una captura sobre el marco del proyecto para verla aquí en grande.",
     cases: [
       {
@@ -202,6 +204,28 @@ export const COPY = {
           { p: "Un solo admin para todo", r: "Panel de administración con niveles de acceso." }
         ],
         stack: ["Rutinas", "Atletas", "Reportes IA", "Multi-nivel"]
+      },
+      {
+        label: "FinanzasApp — Finanzas personales",
+        kicker: "Finanzas personales · App web",
+        title: "FinanzasApp",
+        body: "Aplicación para llevar tus finanzas personales desde la comodidad del celular. Elegís una metodología de control (por ejemplo la regla 50/30/20: 50% necesidades, 30% gustos y 20% ahorro e inversión) y la app reparte cada ingreso automáticamente según ese plan.",
+        img: "/work/finanzasapp.png",
+        gallery: ["/work/finanzasapp.png", "/work/finanzasapp-1.png", "/work/finanzasapp-2.png", "/work/finanzasapp-3.png"],
+        liveUrl: "https://frontend-neon-mu-pi33240cwu.vercel.app/login",
+        features: [
+          "Metodologías de presupuesto configurables (50/30/20 y más)",
+          "Calculadora que reparte cada ingreso según tu plan",
+          "Registro rápido de gastos e ingresos al momento de comprar",
+          "Cuentas y tarjetas separadas con balance por categoría",
+          "Metas de ahorro e insights automáticos"
+        ],
+        solves: [
+          { p: "Se te olvida anotar un gasto en el momento de la compra", r: "Registro rápido pensado para usarse ahí mismo, desde el celular, en segundos." },
+          { p: "No sabés si estás gastando de más o ahorrando lo suficiente", r: "Tu metodología reparte cada ingreso automáticamente y te avisa cuánto llevás de tu meta." },
+          { p: "El dinero está repartido en varias cuentas y tarjetas y perdés el hilo", r: "Todas las cuentas quedan centralizadas con su propio balance por categoría." }
+        ],
+        stack: ["App web", "Multi-metodología", "Multi-cuenta", "100% celular"]
       }
     ],
     s6Kicker: "Planes", s6Title: "Precios claros",
@@ -214,9 +238,9 @@ export const COPY = {
     ],
     s7Kicker: "Testimonios", s7Title: "Lo que dicen los clientes",
     quotes: [
-      { text: "Antes anotábamos los pedidos en un cuaderno y siempre se nos escapaba alguno. Ahora entra todo al sistema y sabemos qué flor hay que reponer el mismo día.", who: "Floristería Alma Caribeña" },
-      { text: "Las matrículas y los pagos de las estudiantes estaban en tres lugares distintos. Con el sistema quedó todo en una sola pantalla y dejamos de perder tiempo cuadrando.", who: "Beauty Academia Siquirres" },
-      { text: "Los clientes reservan solos a cualquier hora y les llega la confirmación por WhatsApp. Dejé de contestar mensajes mientras corto el pelo.", who: "Jajio’S Barber Shop" }
+      { text: "Antes anotábamos los pedidos en un cuaderno y siempre se nos escapaba alguno. Ahora entra todo al sistema y sabemos qué flor hay que reponer el mismo día.", who: "Floristería Alma Caribeña", logo: "/logos/floreria-alma-caribena.png" },
+      { text: "Las matrículas y los pagos de las estudiantes estaban en tres lugares distintos. Con el sistema quedó todo en una sola pantalla y dejamos de perder tiempo cuadrando.", who: "Beauty Academia Siquirres", logo: "/logos/beauty-academia-siquirres.png" },
+      { text: "Los clientes reservan solos a cualquier hora y les llega la confirmación por WhatsApp. Dejé de contestar mensajes mientras corto el pelo.", who: "Jajio’S Barber Shop", logo: "/logos/jajios-barber-shop.png" }
     ],
     s8Kicker: "Preguntas frecuentes", s8Title: "Dudas antes de empezar",
     faqs: [
@@ -238,6 +262,8 @@ export const COPY = {
     fTitle: "Solicitar diagnóstico", fStep: "Sin costo",
     fEmailLabel: "Correo", s9HoursLabel: "Horario",
     fReply: "Respuesta el mismo día hábil",
+    s10Kicker: "Agenda", s10Title: "Reservá una llamada de 30 minutos",
+    s10Body: "Elegí el día y la hora que te queden mejor. Hablamos de tu negocio y te muestro cómo podría funcionar tu sistema, sin costo ni compromiso.",
     fSystem: "Sistema de interés",
     systemOptions: ["Todavía no lo sé", "Inventario inteligente", "CRM con IA", "Agenda de citas", "Sitio web", "Catálogo virtual", "Varios sistemas"],
     ctaKicker: "Siguiente paso", ctaTitle: "Automatizá tu negocio este mes", ctaBtn: "Escribir por WhatsApp",
@@ -245,11 +271,12 @@ export const COPY = {
     footNav: "Navegación", footContact: "Contacto", footRights: "Todos los derechos reservados"
   },
   en: {
-    navAbout: "About", navSolutions: "Solutions", navPlans: "Plans", navContact: "Contact", navCta: "Get a quote",
+    navAbout: "About", navSolutions: "Solutions", navPlans: "Plans", navSchedule: "Schedule", navContact: "Contact", navCta: "Get a quote",
     heroKicker: "Custom software · Real results",
     heroTitleA: "Automate", heroTitleB: "Your Business",
     heroBody: "Smart inventory, AI-powered CRM, automatic appointment booking, websites and virtual catalogs. Everything your business needs to run better and sell more.",
     heroCta1: "Losing sales?", heroCta2: "See solutions",
+    heroGiftCta: "Try our free finance app",
     heroBadge: "Systems running 24/7",
     heroFounderName: "Jared Arce Hernández",
     heroFounderRole: "Founder of WebMasterCR",
@@ -299,6 +326,7 @@ export const COPY = {
     caseSolves: "Problems it solves",
     caseFeatures: "Main features",
     caseCta: "I want something like this",
+    caseTryApp: "Open the app",
     caseNoImage: "Drag a screenshot onto the project frame to see it large here.",
     cases: [
       {
@@ -447,6 +475,28 @@ export const COPY = {
           { p: "One admin for everything", r: "An admin panel with access levels." }
         ],
         stack: ["Routines", "Athletes", "AI reports", "Multi-level"]
+      },
+      {
+        label: "FinanzasApp — Personal finance",
+        kicker: "Personal finance · Web app",
+        title: "FinanzasApp",
+        body: "A web app for tracking your personal finances from your phone. Pick a budgeting method (for example the 50/30/20 rule: 50% needs, 30% wants, 20% savings and investing) and the app splits every income automatically based on that plan.",
+        img: "/work/finanzasapp.png",
+        gallery: ["/work/finanzasapp.png", "/work/finanzasapp-1.png", "/work/finanzasapp-2.png", "/work/finanzasapp-3.png"],
+        liveUrl: "https://frontend-neon-mu-pi33240cwu.vercel.app/login",
+        features: [
+          "Configurable budgeting methods (50/30/20 and more)",
+          "Calculator that splits every income by your plan",
+          "Quick entry for expenses and income right at the moment of purchase",
+          "Separate accounts and cards with a balance per category",
+          "Savings goals and automatic insights"
+        ],
+        solves: [
+          { p: "You forget to log an expense at the moment of purchase", r: "A quick-entry flow built to be used right there, from your phone, in seconds." },
+          { p: "You don't know if you're overspending or saving enough", r: "Your method splits every income automatically and shows how close you are to your goal." },
+          { p: "Money is spread across accounts and cards and you lose track", r: "All accounts are centralized with their own balance per category." }
+        ],
+        stack: ["Web app", "Multi-method", "Multi-account", "100% mobile"]
       }
     ],
     s6Kicker: "Plans", s6Title: "Clear pricing",
@@ -459,9 +509,9 @@ export const COPY = {
     ],
     s7Kicker: "Testimonials", s7Title: "What clients say",
     quotes: [
-      { text: "We used to write orders in a notebook and one always slipped through. Now everything goes into the system and we know which flowers to restock the same day.", who: "Floristería Alma Caribeña" },
-      { text: "Enrollments and student payments lived in three different places. With the system it is all on one screen and we stopped losing time reconciling.", who: "Beauty Academia Siquirres" },
-      { text: "Clients book on their own at any hour and get their confirmation over WhatsApp. I stopped answering messages while cutting hair.", who: "Jajio’S Barber Shop" }
+      { text: "We used to write orders in a notebook and one always slipped through. Now everything goes into the system and we know which flowers to restock the same day.", who: "Floristería Alma Caribeña", logo: "/logos/floreria-alma-caribena.png" },
+      { text: "Enrollments and student payments lived in three different places. With the system it is all on one screen and we stopped losing time reconciling.", who: "Beauty Academia Siquirres", logo: "/logos/beauty-academia-siquirres.png" },
+      { text: "Clients book on their own at any hour and get their confirmation over WhatsApp. I stopped answering messages while cutting hair.", who: "Jajio’S Barber Shop", logo: "/logos/jajios-barber-shop.png" }
     ],
     s8Kicker: "FAQ", s8Title: "Questions before starting",
     faqs: [
@@ -483,6 +533,8 @@ export const COPY = {
     fTitle: "Request a diagnosis", fStep: "Free of charge",
     fEmailLabel: "Email", s9HoursLabel: "Hours",
     fReply: "Reply the same business day",
+    s10Kicker: "Schedule", s10Title: "Book a 30-minute call",
+    s10Body: "Pick the day and time that work best for you. We'll talk about your business and how a system could work for you, no cost or commitment.",
     fSystem: "System of interest",
     systemOptions: ["Not sure yet", "Smart inventory", "AI CRM", "Automatic booking", "Website", "Virtual catalog", "Several systems"],
     ctaKicker: "Next step", ctaTitle: "Automate your business this month", ctaBtn: "Message on WhatsApp",

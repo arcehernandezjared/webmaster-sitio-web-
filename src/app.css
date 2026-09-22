@@ -42,6 +42,13 @@ html { scroll-behavior:smooth; }
   #top > div > div > div:last-child { border-left: 0 !important; border-top: 2px solid var(--color-text) !important; margin-left: 0 !important; min-height: 240px !important; }
   footer > div { padding-left: 18px !important; padding-right: 18px !important; }
   body { padding-bottom: 68px; }
+
+  /* Cards stacked in a single column read as one solid wall of text with only a
+     2px hairline between them; turn that gap into real breathing room on phones. */
+  .tile-grid { gap: 12px !important; }
+  div[style*="padding: 32px 26px"] { padding: 22px 20px !important; }
+  div[style*="padding: 32px 28px"] { padding: 22px 20px !important; }
+  [data-case-panel] { padding: 20px 18px !important; }
 }
 @media (max-width: 640px) {
   /* Solo la marca (el ícono) en la barra superior: el nombre completo no cabe junto al menú. */

@@ -109,6 +109,7 @@ function Navbar({ t, lang, setLang }) {
   const links = [
     ['#sobre', t.navAbout],
     ['#soluciones', t.navSolutions],
+    ['#agendar', t.navBooking],
     ['#contacto', t.navContact]
   ];
 
@@ -976,6 +977,78 @@ function Faq({ t }) {
   );
 }
 
+/* Carga el embed inline de Cal.com y monta el calendario de reservas de 30 min. */
+function useCalEmbed() {
+  useEffect(() => {
+    (function (C, A, L) {
+      const p = (a, ar) => a.q.push(ar);
+      const d = C.document;
+      C.Cal = C.Cal || function (...ar) {
+        const cal = C.Cal;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement('script')).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = (...apiAr) => p(api, apiAr);
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === 'string') {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ['initNamespace', namespace]);
+          } else {
+            p(cal, ar);
+          }
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, 'https://app.cal.com/embed/embed.js', 'init');
+
+    window.Cal('init', '30min', { origin: 'https://app.cal.com' });
+    window.Cal.config = window.Cal.config || {};
+    window.Cal.config.forwardQueryParams = true;
+
+    window.Cal.ns['30min']('inline', {
+      elementOrSelector: '#my-cal-inline-30min',
+      config: { layout: 'month_view', useSlotsViewOnSmallScreen: 'true' },
+      calLink: 'jared-arce-hernandez-odlyub/30min'
+    });
+
+    window.Cal.ns['30min']('ui', { hideEventTypeDetails: false, layout: 'month_view' });
+  }, []);
+}
+
+function Booking({ t }) {
+  useCalEmbed();
+  return (
+    <section id="agendar" style={{ borderBottom: '2px solid var(--color-text)', background: 'var(--color-surface)' }}>
+      <div style={S.wrap}>
+        <div data-reveal="1">
+          <p style={S.kicker}>08 · {t.bookKicker}</p>
+          <h2 style={{ ...S.h2, marginBottom: 16 }}>{t.bookTitle}</h2>
+          <p style={{ margin: 0, maxWidth: '58ch', fontSize: 17, color: 'var(--color-neutral-800)', textWrap: 'pretty' }}>{t.bookBody}</p>
+        </div>
+        <div style={{ ...S.rule, margin: '24px 0 32px' }} />
+        <div
+          id="my-cal-inline-30min"
+          style={{
+            width: '100%',
+            minHeight: 700,
+            border: '2px solid var(--color-text)',
+            background: 'var(--color-bg)',
+            boxShadow: 'var(--shadow-md)',
+            overflow: 'auto'
+          }}
+        />
+      </div>
+    </section>
+  );
+}
+
 function Contact({ t, lang }) {
   const formRef = useRef(null);
 
@@ -1027,7 +1100,7 @@ function Contact({ t, lang }) {
       />
       <div style={{ position: 'relative', ...S.wrap, ...S.grid(320), gap: 48 }}>
         <div data-reveal="1">
-          <p style={S.kicker}>08 · {t.s9Kicker}</p>
+          <p style={S.kicker}>09 · {t.s9Kicker}</p>
           <h2 style={S.h2}>{t.s9Title}</h2>
           <div style={{ ...S.rule, margin: '24px 0' }} />
           <p style={{ margin: '0 0 32px', maxWidth: '42ch', fontSize: 17, color: 'var(--color-neutral-800)', textWrap: 'pretty' }}>{t.s9Body}</p>
@@ -1194,6 +1267,7 @@ export default function App() {
       <CaseModal t={t} index={work} onClose={() => setWork(-1)} />
       <Testimonials t={t} />
       <Faq t={t} />
+      <Booking t={t} />
       <Contact t={t} lang={lang} />
       <CtaBanner t={t} />
       <Footer t={t} />

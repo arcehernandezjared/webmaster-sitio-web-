@@ -1,6 +1,6 @@
 export const COPY = {
   es: {
-    navAbout: "Sobre mí", navSolutions: "Soluciones", navPlans: "Planes", navContact: "Contacto", navCta: "Cotizar",
+    navAbout: "Sobre mí", navSolutions: "Soluciones", navPlans: "Planes", navBooking: "Agendar", navContact: "Contacto", navCta: "Cotizar",
     heroKicker: "Software a la medida · Resultados reales",
     heroTitleA: "Automatiza", heroTitleB: "Tu Negocio",
     heroBody: "Inventario inteligente, CRM con IA, agenda de citas automática, sitios web y catálogos virtuales. Todo lo que tu negocio necesita para operar mejor y vender más.",
@@ -226,6 +226,8 @@ export const COPY = {
       { q: "¿Los sistemas se integran entre sí?", a: "Sí. Inventario, CRM, agenda y catálogo comparten la misma base de datos cuando se instalan juntos." },
       { q: "¿Qué incluye el soporte?", a: "Atención directa por WhatsApp, corrección de errores y ajustes menores según el plan contratado." }
     ],
+    bookKicker: "Agenda", bookTitle: "Reservá una llamada",
+    bookBody: "Elegí el horario que más te acomode. 30 minutos para revisar tu operación y ver qué sistema te conviene.",
     s9Kicker: "Contacto", s9Title: "Contanos qué necesita tu negocio",
     s9Body: "Escribinos con lo que tenés hoy y te respondemos con una recomendación concreta, sin compromiso.",
     s9Hours: "Lun a Dom · 8:00 – 18:00",
@@ -245,7 +247,7 @@ export const COPY = {
     footNav: "Navegación", footContact: "Contacto", footRights: "Todos los derechos reservados"
   },
   en: {
-    navAbout: "About", navSolutions: "Solutions", navPlans: "Plans", navContact: "Contact", navCta: "Get a quote",
+    navAbout: "About", navSolutions: "Solutions", navPlans: "Plans", navBooking: "Book a call", navContact: "Contact", navCta: "Get a quote",
     heroKicker: "Custom software · Real results",
     heroTitleA: "Automate", heroTitleB: "Your Business",
     heroBody: "Smart inventory, AI-powered CRM, automatic appointment booking, websites and virtual catalogs. Everything your business needs to run better and sell more.",
@@ -471,6 +473,8 @@ export const COPY = {
       { q: "Do the systems integrate with each other?", a: "Yes. Inventory, CRM, booking and catalog share one database when installed together." },
       { q: "What does support include?", a: "Direct help over WhatsApp, bug fixes and minor adjustments according to your plan." }
     ],
+    bookKicker: "Booking", bookTitle: "Book a call",
+    bookBody: "Pick the time that works best for you. 30 minutes to review your operation and see which system fits.",
     s9Kicker: "Contact", s9Title: "Tell us what your business needs",
     s9Body: "Write to us with what you have today and we will reply with a concrete recommendation, no strings attached.",
     s9Hours: "Mon to Sun · 8:00 – 18:00",
